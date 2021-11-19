@@ -1,5 +1,8 @@
 import asyncHandler from 'express-async-handler'
 import User from '../models/User.js';
+import { tokenGen } from '../utils/token.js';
+
+
 
 export const authUser = () => {
     
@@ -24,7 +27,8 @@ export const signUp = asyncHandler(async(req, res) => {
                 _id: newUser._id,
                 name: newUser.name,
                 email: newUser.email,
-                password: newUser.password 
+                password: newUser.password,
+                token: tokenGen(newUser._id)
             })
         }else{
             res.status(400);
