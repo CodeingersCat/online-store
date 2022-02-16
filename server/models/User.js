@@ -9,14 +9,26 @@ const userSchema = new Schema({
         required: true
     },
 
+    firstname: {
+        type: String,
+        required: false
+    },
+    
+    lastname: {
+        type: String,
+        required: false
+    },
+    
     email: {
         type: String,
         required: true,
         unique: true
     },
 
-    address: {
-        type: String,
+    addresses: {
+        type: Array,
+        default: [],
+        required: false
     },
 
     password: {
@@ -28,6 +40,19 @@ const userSchema = new Schema({
         type: Number,
         required: true,
         default: 0
+    },
+
+    cart:{
+        type: Array,
+        default: [],
+        required: false
+
+    },
+
+    orders: {
+        type: Array,
+        default: [],
+        required: false
     }
 },
     { timestamps: true }

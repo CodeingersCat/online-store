@@ -1,5 +1,9 @@
-import express from 'express'
+import express from 'express';
+import { allProduct, getProduct } from '../controllers/Product.js';
 
-const productRoute = express.Router()
+const productRoutes = express.Router();
 
-export default productRoute;
+productRoutes.use('/get/:id', getProduct);
+productRoutes.use('/all', allProduct);
+
+export default productRoutes;

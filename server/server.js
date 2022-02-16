@@ -4,13 +4,16 @@ import dotenv from 'dotenv'
 import dbConnect from './config/db.js'
 import userRoutes from './routes/User.js'
 import { errorHandler } from './middleware/errorHandlers.js'
+import cookieParser from 'cookie-parser'
+import productRoutes from './routes/Product.js'
 
 
 const app = express()
 
-dotenv.config()
+console.log(dotenv.config())
 app.use(cors())
 app.use(express.json())
+app.use(cookieParser())
 
 app.use((req, res, next) => {
     console.log("Hit at "+req.originalUrl);
@@ -18,7 +21,7 @@ app.use((req, res, next) => {
 })
 
 app.use('/api/user', userRoutes);
-
+app.use('/api/product', productRoutes);
 
 app.use(errorHandler);
 

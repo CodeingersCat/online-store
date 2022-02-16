@@ -1,11 +1,13 @@
-import {Image, Badge, StarIcon } from "@chakra-ui/react"
+import {Image, Badge } from "@chakra-ui/react"
 import { Box, Flex } from "@chakra-ui/layout"
+import { useState } from "react";
  
 const Card = ({product}) => {
+  const [hover, setHover] = useState(1);
   return (
-    <Box maxW="sm" borderWidth="1px transparent" borderRadius="lg" overflow="hidden">
+    <Box maxW="sm" boxShadow="2xl"  borderRadius="2xl" overflow="hidden" background={"white"}onMouseEnter={() => setHover(1.17)} onMouseLeave={() => setHover(1)}>
       <Flex align="center" justify="center">
-      <Image boxSize="200px" objectFit="contain" src={product.image} alt="image" />
+      <Image boxSize="200px" objectFit="contain" src={product.image} alt="image" pt="6" style={{transform: `scale(${hover})`, transition: "transform .6s"}} />
       </Flex>
       <Box p="6">
         <Box display="flex" alignItems="baseline">
