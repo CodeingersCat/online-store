@@ -6,12 +6,15 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon server/server.js"
+    "server": "nodemon server/server.js",
+    "client": "cd client/online-store && npm run dev",
+    "start": "concurrently \"npm run server\" \"npm run client\"" 
   },
   "author": "SHRAWAN BARUAH",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "concurrently": "^7.2.2",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
@@ -19,6 +22,7 @@
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.11",
-    "nodemon": "^2.0.13"
+    "nodemon": "^2.0.13",
+    "razorpay": "^2.8.0"
   }
 }

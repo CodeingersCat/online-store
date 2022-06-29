@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Flex, Spacer } from "@chakra-ui/layout";
-import { Box, Heading, Button } from "@chakra-ui/react";
+import { Box, Text, Button } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/toast";
 import {
   Menu,
@@ -22,22 +22,23 @@ const Header = () => {
   const toast = useToast();
 
   return (
-    <Flex h="20vh" w="100%" mt="5vh" justifyContent="center" id='header'>
+    <Flex h={"10vh"} w="100%" mt={["2.5vh", "5vh"]} justifyContent="center" id='header'>
       <Box>
         <Link href="/">
           <a>
-            <Heading
-              border="4px"
-              borderStyle="solid"
-              borderColor="teal"
+            <Text
+              // border="4px"
+              // borderStyle="solid"
+              // borderColor="teal"
               p="2"
               pt="0"
               shadow="2xl"
               borderRadius="lg"
-              background={"white"}
+              fontWeight={"semibold"}
+              // background={"white"}
             >
               futur_ware
-            </Heading>
+            </Text>
           </a>
         </Link>
       </Box>

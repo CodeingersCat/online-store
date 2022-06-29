@@ -8,7 +8,7 @@ export const TextField = ({ label, ...props }) => {
   return (
     <>
       <div>
-        <FormLabel>
+        <FormLabel fontWeight={"semibold"}>
           {label + "  "}
           {meta.touched && meta.error && (
             <Tag variant="subtle" colorScheme="red">
@@ -19,7 +19,6 @@ export const TextField = ({ label, ...props }) => {
         <Input
           {...field}
           {...props}
-          mb="5vh"
           variant="flushed"
           borderBottom="solid 2px"
           shadow="2xl"

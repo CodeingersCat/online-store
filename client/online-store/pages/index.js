@@ -11,11 +11,9 @@ export default function Home(props) {
         <span style={{borderBottom:"4px solid teal"}}>Latest Products</span>
       </Heading>
 
-      <Grid templateColumns={["repeat(1, 1fr)","repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(2, 1fr)","repeat(3, 1fr)", "repeat(3, 1fr)", "repeat(3, 1fr)"]} gap={20}>
+      <Grid templateColumns={["repeat(1, 1fr)","repeat(2, 1fr)", "repeat(2, 1fr)", "repeat(3, 1fr)", "repeat(3, 1fr)"]} gap={20}>
         {props.prods.map(product => (
-          <Link href={"/product/"+product._id} key={product.id}>
-            <a><Card product={product}/></a>
-          </Link>
+            <Card product={product} key={product.id}/>
         ))}
       </Grid>
     </Box>

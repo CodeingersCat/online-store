@@ -9,7 +9,6 @@ import Product from '../models/Product.js';
 //POST api/user/signup
 export const signUp = asyncHandler(async(req, res) => {
     const { name, email, password } = req.body;
-    console.log(name, email, password)
     const checkDuplicate = await User.findOne({ email });
 
     if(checkDuplicate){
@@ -37,7 +36,8 @@ export const signUp = asyncHandler(async(req, res) => {
 //ACCESS: PUBLIC
 //POST api/user/login
 export const signIn = asyncHandler(async(req, res) => {
-    const user = await User.findOne({ email: req.body.email }).select('-password')
+    const user = await User.findOne({ email: req.body.email })
+    //.select('-password')
     if(!user){
         res.status(400);
         throw new Error("User not found");

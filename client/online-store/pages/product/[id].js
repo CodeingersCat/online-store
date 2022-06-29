@@ -51,45 +51,46 @@ const Product = (props) => {
   };
 
   return (
-    <div style={{ width: "100%" }}>
-      <Flex alignItems={"top"} maxH={"80vh"}>
+      <Flex alignItems={["center", "flex-start"]} justifyContent={"space-between"} flexDir={["column", "row"]} pt={"30px"}>
         <Box
-          w={"40%"}
+          w={["80%" , "40%"]}
           boxShadow="2xl"
           borderRadius="2xl"
           overflow="hidden"
           background={"white"}
-          h={"40%"}
+          maxH={"500px"}
         >
-          <Flex align="center" justify="center">
+          <Flex align="center" justify="center" h={"100%"}>
             <Image
-              boxSize="400px"
               objectFit={"contain"}
+              maxH={["40vh", "500px"]}
               src={product.image}
-              padding={"10%"}
+              py={"6"}
+              px={"6"}
             />
           </Flex>
         </Box>
-        <Flex
-          maxW={"60%"}
-          direction={"column"}
-          justifyContent={"space-between"}
-          paddingLeft={"10%"}
+        <Box
+          w={["100%", "50%"]}
+          paddingTop={["10%", "0%"]}
         >
-          <Text fontSize={"3xl"} fontWeight={"semibold"}>
+        <Flex
+          direction={"column"}
+        >
+          <Text fontSize={["larger", "larger", "2xl", "3xl"]} fontWeight={"semibold"} w={"100%"}>
             {product.name}
           </Text>
-          <Text as="u" fontSize={"larger"} paddingTop={"5%"}>
-            About this item
-          </Text>
-          <Text fontSize={"larger"} maxW={"60%"}>
+          {/* <Text as="u" fontSize={["large", "large", "larger"]} paddingTop={["2%", "2%","2%"]}>
+            About
+          </Text> */}
+          <Text fontSize={["md", "md", "larger"]} maxW={["100%", "80%"]} paddingTop={["6%", "2%","2%"]}>
             {product.description}
           </Text>
           <Stack paddingBottom={"2%"}>
-            <Stat size={"md"} paddingTop={"5%"}>
+            <Stat size={"md"} paddingTop={"10%"}>
               <StatLabel fontSize={"lg"}>Price</StatLabel>
-              <StatNumber fontSize={"3xl"}>₹ {product.price}/-</StatNumber>
-              <StatHelpText fontSize={"lg"}>
+              <StatNumber fontSize={"3xl"} >₹ {product.price}/-</StatNumber>
+              <StatHelpText fontSize={"lg"} style={{borderBottom:"4px solid teal"}} pb={"10px"}>
                 {product.stock} in stock
               </StatHelpText>
             </Stat>
@@ -106,8 +107,8 @@ const Product = (props) => {
             </ButtonGroup>
           </Stack>
         </Flex>
+        </Box>
       </Flex>
-    </div>
   );
 };
 

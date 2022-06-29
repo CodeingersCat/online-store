@@ -6,11 +6,12 @@ import userRoutes from './routes/User.js'
 import { errorHandler } from './middleware/errorHandlers.js'
 import cookieParser from 'cookie-parser'
 import productRoutes from './routes/Product.js'
+import orderRoutes from './routes/Order.js'
 
 
 const app = express()
 
-console.log(dotenv.config())
+dotenv.config()
 app.use(cors())
 app.use(express.json())
 app.use(cookieParser())
@@ -22,6 +23,7 @@ app.use((req, res, next) => {
 
 app.use('/api/user', userRoutes);
 app.use('/api/product', productRoutes);
+app.use('/api/order', orderRoutes);
 
 app.use(errorHandler);
 
