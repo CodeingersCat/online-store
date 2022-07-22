@@ -6,9 +6,8 @@ import { useField } from "formik";
 export const TextField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
-    <>
       <div>
-        <FormLabel fontWeight={"semibold"}>
+        <FormLabel fontWeight={"semibold"} mb={"0"}>
           {label + "  "}
           {meta.touched && meta.error && (
             <Tag variant="subtle" colorScheme="red">
@@ -26,6 +25,5 @@ export const TextField = ({ label, ...props }) => {
           w={["70vw", null, "30vw"]}
         />
       </div>
-    </>
   );
 };

@@ -1,7 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import User from '../models/User.js';
 import { tokenGen } from '../utils/token.js'; 
-import jwt from 'jsonwebtoken'
 import Product from '../models/Product.js';
 
 //Sign up new user in database
@@ -74,16 +73,20 @@ export const getUser = asyncHandler(async(req, res) => {
 //ACCESS: PRIVATE
 //PUT api/user/toCart
 export const addToCart = asyncHandler(async(req, res) => {
-    const cartItem = req.body.pid;
+    const itemId = req.body.pid;
     const user = req.user;
-    if(!user || !cartItem){
+    const qty = req.qty ? req.qty : 1; 
+    const cartItem = await Product.findById(itemId).select("name price image");
+    const subtotal = cartItem.price*qty
+    
+    if(!user || !itemId){
         res.status(400);
         throw new Error("Please log in");
     }
-
-    const updatedCart = await User.findByIdAndUpdate(user._id, {
-        cart : [...user.cart, cartItem]
-    }).exec()
+    
+    const updatedCart = await User.updateOne({_id: user._id}, {
+        "$push": {cart : {"name":cartItem.name, "prodid": cartItem._id, "price": cartItem.price, "qty": qty, "subtotal": subtotal, "image": cartItem.image}}
+    });
 
     res.status(200);
     res.json({updatedCart})
@@ -100,16 +103,42 @@ export const getCart = asyncHandler(async(req, res) => {
     const user = req.user;
     const { cart }  = await User.findById(user).select("cart -_id");
     let prods = cart.map(async item => {
-        const elem = await Product.findById(item);
-        // console.log(elem)
+        const elem = await Product.findById(item.prodid).select("_id name brand description image category ratings numReviews");
+        //console.log(elem)
         // prods.push(elem)
-        return elem;
+        return elem
     })
 
     Promise
     .all(prods)
     .then(prods => {
+        //console.log(prods)
+        const reslt = []
+        prods.forEach((val, i) => reslt.push({...val._doc, qty: cart[i].qty, price: cart[i].price, subtotal: cart[i].subtotal}))
+        console.log(reslt)
+
         res.status(200);
-        res.json(prods);
+        res.json(reslt);
     })    
+})
+
+//Deletes items from cart
+//ACCESS: PRIVATE
+//DELETE API/USER/CART
+export const deleteCartItem = asyncHandler(async(req, res) => {
+    if(!req.user){
+        res.status(400);
+        throw new Error("Please log in");
+    }
+    const user = req.user;
+    const { cart }  = await User.findById(user).select("cart -_id");
+    const prodid = req.body.prodid
+    const newCart = cart.filter(item => item.prodid.toString() !== prodid)
+
+    const updatedCart = await User.updateOne({_id: user._id}, {
+        "$set": {cart : newCart}
+    });
+
+    res.status(200);
+    res.json({updatedCart});
 })

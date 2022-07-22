@@ -1,16 +1,19 @@
 import { Box, Heading, SimpleGrid, Button } from "@chakra-ui/react"
 import { TextField } from "../../components/Form/Fields"
 import { Field, Form, Formik } from "formik";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import * as Yup from "yup";
 import { UserContext } from "../../helpers/context";
 import { isAuthenticated } from "../../helpers/User";
 import { useRouter } from "next/router";
 
 const Edit = () => {
+  useEffect(() => {
     if(!isAuthenticated()){
       useRouter().push("/login");
     }
+  }, [isAuthenticated])
+    
     const { user, setUser } = useContext(UserContext)
     const formFields = ({...props}) => {
         return (
@@ -55,16 +58,17 @@ const Edit = () => {
               </SimpleGrid>
             </Form>
         )}
-    return(
-        <Box width={"100%"}>
+    
+      return(
+        <Box width={"100%"} h={"90vh"}>
             <Heading mb="8vh">
                 <span style={{borderBottom:"4px solid teal"}}>Edit Profile</span>
             </Heading>
 
             <Formik
             initialValues={{
-            username: user.name,
-            email: user.email,
+            // username: user.name,
+            // email: user.email,
             firstname: user.firstname,
             firstname: user.lastname
             }}

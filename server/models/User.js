@@ -42,12 +42,40 @@ const userSchema = new Schema({
         default: 0
     },
 
-    cart:{
-        type: Array,
-        default: [],
-        required: false
+    cart: [
+        {
+            name : {
+                type: String,
+                required: true
+            },  
+            prodid: {
+                type: mongoose.SchemaTypes.ObjectId,
+                ref: 'Product'
+            },
+            qty: {
+                type: Number,
+                default: 1,
+                required: true
+            },
+            price: {
+                type: Number,
+                required: true
+            },
+            subtotal: {
+                type: Number,
+                required: true,
+            },
+            image: {
+                type: String
+            }
+        }
+    ],
 
-    },
+    // cartTotal: {
+    //     type: Number,
+    //     default: 0,
+    //     required: true
+    // },
 
     orders: {
         type: Array,
@@ -63,13 +91,16 @@ userSchema.method('matchPassword', async function(password){
 })
 
 userSchema.pre('save', async function(next){
-    if(!this.isModified('password')){
-        next();
-    }else{
+    if(this.isModified('password')){
         const salt = await bcrypt.genSalt(10);
         this.password =  await bcrypt.hash(this.password, salt);
-    }
+    }else next();
 })
+
+// userSchema.pre('updateOne', function(){
+//     console.log(this)
+//     this.cart.subtotal = this.cart.qty*this.cart.price;
+// })
 
 const User = mongoose.model('User', userSchema);
 export default User;

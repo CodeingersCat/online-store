@@ -35,7 +35,7 @@ const Product = (props) => {
         status: "success",
         isClosable: true,
       });
-      setUser({ ...user, cart: [...user.cart, product._id] });
+      setUser({ ...user, cart: [...user.cart, {"name": product.name, "prodid": product._id, "qty": 1, "price": product.price, "subtotal": product.price, "image": product.image}] });
     } catch (err) {
       //error notification
       console.log(err)
@@ -88,7 +88,7 @@ const Product = (props) => {
           </Text>
           <Stack paddingBottom={"2%"}>
             <Stat size={"md"} paddingTop={"10%"}>
-              <StatLabel fontSize={"lg"}>Price</StatLabel>
+              <StatLabel fontSize={"lg"}>Amount</StatLabel>
               <StatNumber fontSize={"3xl"} >₹ {product.price}/-</StatNumber>
               <StatHelpText fontSize={"lg"} style={{borderBottom:"4px solid teal"}} pb={"10px"}>
                 {product.stock} in stock

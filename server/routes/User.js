@@ -1,5 +1,5 @@
 import express from 'express'
-import { addToCart, getCart, getUser, signIn, signUp } from '../controllers/User.js';
+import { addToCart, deleteCartItem, getCart, getUser, signIn, signUp } from '../controllers/User.js';
 import Private from '../middleware/authHandler.js';
 
 const userRoutes = express.Router()
@@ -9,6 +9,7 @@ userRoutes.post('/signup', signUp);
 userRoutes.get('/get', Private, getUser);
 userRoutes.get('/cart', Private, getCart);
 userRoutes.put('/toCart', Private, addToCart);
+userRoutes.delete("/deleteCartItem", Private, deleteCartItem);
 
 userRoutes.get('/trial', (req, res) => {
     res.status(201);

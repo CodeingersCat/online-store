@@ -8,7 +8,7 @@ import {
   AccordionIcon,
 } from "@chakra-ui/react";
 import { UserContext } from "../helpers/context";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getOneProd } from "../helpers/Product";
 import { createOrder } from "../helpers/Order";
 
@@ -20,6 +20,10 @@ const Checkout = () => {
     address: "",
     payment: "",
     qty: 1
+  })
+
+  useEffect(() => {
+    if(!id || id.length === 0) useRouter().push("/");
   })
   
   const handleAddr = async (e) => {
