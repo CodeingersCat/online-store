@@ -2,9 +2,10 @@
   "name": "online-store",
   "version": "1.0.0",
   "description": "Ecommerce with Nextjs",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/CodeingersCat/online-store/issues"
   },
-  "homepage": "https://github.com/CodeingersCat/online-store#readme"
+  "homepage": "https://github.com/CodeingersCat/online-store#readme",
+  "dependencies": {
+    "autoprefixer": "^10.4.12",
+    "next": "^12.3.1",
+    "postcss": "^8.4.18",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.1.8"
+  }
 }

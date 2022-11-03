@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face{
+    font-family: "Kanit";
+    src: url("../public/Fonts/Kanit-Regular.ttf");
+}
+
+@font-face{
+    font-family: "Montserrat";
+    src: url("../public/Fonts/Montserrat-VariableFont_wght.ttf");
+}
+
+*{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 0;
+}
