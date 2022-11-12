@@ -5,12 +5,12 @@ const Layout = ({ children  }) => {
     return(
         <div>
             <nav>
-                <div className="flex justify-center">
+                <div className="sticky flex justify-center">
                     <div className="mobile:px-12 sm:flex-row sm:pt-12 sm:pb-6 md:pt-2 md:pb-2 desktop:px-0 px-4 pt-4 flex flex-col w-fw">
                         <div className="sm:mr-16 max-w-48 sm:max-w-none">
                               <Link href="/">
                                 <a aria-label="Home">
-                                    <img src="/logo.png" alt="logo" width="100" height="100"
+                                    <img src="/logo.png" alt="logo" width="80" height="80"
                                     className="mt-2"/>
                                 </a>
                               </Link>
@@ -21,7 +21,8 @@ const Layout = ({ children  }) => {
                               <a aria-label="Home" className="mt-auto mb-1">
                                 <p className="
                                   sm:mr-8
-                                  mb-4 text-left text-smaller mr-4
+                                  mb-2 
+                                  text-left text-smaller mr-4
                                   sm:mb-0 relative
                                   after:transition-transform
                                   after:duration-200
@@ -29,7 +30,7 @@ const Layout = ({ children  }) => {
                                   after:content-[''] 
                                   after:w-full 
                                   after:h-0.5 
-                                  after:top-full 
+                                  after:top-[90%] 
                                   after:left-0
                                   after:bg-[rgb(2,0,36)]
                                   after:bg-gradient-to-r
@@ -49,7 +50,8 @@ const Layout = ({ children  }) => {
                               <a aria-label="In ear earphones" className="mt-auto mb-1">
                                 <p className="
                                   sm:mr-8
-                                  mb-4 text-left text-smaller mr-4
+                                  mb-2 
+                                  text-left text-smaller mr-4
                                   sm:mb-0 relative
                                   after:transition-transform
                                   after:duration-200
@@ -57,7 +59,7 @@ const Layout = ({ children  }) => {
                                   after:content-[''] 
                                   after:w-full 
                                   after:h-0.5 
-                                  after:top-full 
+                                  after:top-[90%] 
                                   after:left-0
                                   after:bg-[rgb(2,0,36)]
                                   after:bg-gradient-to-r
@@ -76,7 +78,8 @@ const Layout = ({ children  }) => {
                               <a aria-label="Overhead headphones" className="mt-auto mb-1">
                                 <p className="
                                   sm:mr-8
-                                  mb-4 text-left text-smaller mr-4
+                                  mb-2 
+                                  text-left text-smaller mr-4
                                   sm:mb-0 relative
                                   after:transition-transform
                                   after:duration-200
@@ -84,7 +87,7 @@ const Layout = ({ children  }) => {
                                   after:content-[''] 
                                   after:w-full 
                                   after:h-0.5 
-                                  after:top-full 
+                                  after:top-[90%] 
                                   after:left-0
                                   after:bg-[rgb(2,0,36)]
                                   after:bg-gradient-to-r
@@ -103,7 +106,8 @@ const Layout = ({ children  }) => {
                               <a aria-label="Wireless" className="mt-auto mb-1">
                                 <p className="
                                   sm:mr-8
-                                  mb-4 text-left text-smaller mr-4
+                                  mb-2 
+                                  text-left text-smaller mr-4
                                   sm:mb-0 relative
                                   after:transition-transform
                                   after:duration-200
@@ -111,7 +115,7 @@ const Layout = ({ children  }) => {
                                   after:content-[''] 
                                   after:w-full 
                                   after:h-0.5 
-                                  after:top-full 
+                                  after:top-[90%] 
                                   after:left-0
                                   after:bg-[rgb(2,0,36)]
                                   after:bg-gradient-to-r
@@ -130,7 +134,8 @@ const Layout = ({ children  }) => {
                               <a aria-label="Help Center" className="mt-auto mb-1">
                                 <p className="
                                   sm:mr-8
-                                  mb-4 text-left text-smaller mr-4
+                                  mb-2 
+                                  text-left text-smaller mr-4
                                   sm:mb-0 relative
                                   after:transition-transform
                                   after:duration-200
@@ -138,7 +143,7 @@ const Layout = ({ children  }) => {
                                   after:content-[''] 
                                   after:w-full 
                                   after:h-0.5 
-                                  after:top-full 
+                                  after:top-[90%] 
                                   after:left-0
                                   after:bg-[rgb(2,0,36)]
                                   after:bg-gradient-to-r
